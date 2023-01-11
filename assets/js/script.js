@@ -5,6 +5,29 @@ var city;
 //OpenWeather Current Weather Data URL
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
+$(document).ready(function () { //we want the document to load only once
+    function onLoad(){
+    }
+
+    //Use local storage for the search history
+    const history = JSON.parse(localStorage.getItem('search-history')) || [];
+    const historyLastValue = history[history.length - 1];
+    console.log(historyLastValue);
+    renderBtns();
+    function renderBtns() {
+        $(".history").empty();
+        history.forEach(function (x) {
+            const recentCityButton = $("<li><button>" + x + "</button></li>");
+            $(".history").append(recentCityButton);
+        })
+    }
+
+
+
+
+
+
+
 fetch(queryURL)
 //You'll need to adjust your application to accept user input, to store in the city variable that you've created.
 .then(function (response) {
