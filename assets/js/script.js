@@ -1,13 +1,5 @@
 //store my unique API Key
 const APIKey = "368d2fd4c6fc223c2740b129e6a0e0ca";
-//OpenWeather Current Weather Data URL
-const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${caseFix}&appid=${APIKey}&units=imperial`;
-var latitude = res.coord.lat;
-var longitude = res.coord.lon;
-//OpenWeather UV Index Data URL
-const queryUVIndex = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${latitude}&lon=${longitude}`
-//OpenWeather Five Day Forecast Data URL
-const fiveDayForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${APIKey}&units=imperial`
 
 $(document).ready(function () { //we want the document to load only once
     function onLoad(){
@@ -44,9 +36,11 @@ $(document).ready(function () { //we want the document to load only once
             let newWord = letterArr[0].toUpperCase() + letterArr.substring(1, letterArr.length).toLowerCase();
             return newWord;
         }).join(' ');
-    } // might not need 
+        
 
 //Call API Key. Current weather first using Ajax
+//OpenWeather Current Weather Data URL
+const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${caseFix}&appid=${APIKey}&units=imperial`;
 $.ajax({
     url: queryURL,
     method: "GET",
@@ -76,8 +70,10 @@ $.ajax({
             $("#today").html(currentWeatherHTML);
 
             //Call a second Ajax to get the UV Index
-                         //This is the second Ajax to get UV Index. 
-                         $.ajax({
+            var latitude = res.coord.lat;
+            var longitude = res.coord.lon;
+            const queryUVIndex = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${latitude}&lon=${longitude}`
+                        $.ajax({
                             url: queryUVIndex,
                             method: "GET",
                             dataType: "json",
@@ -88,6 +84,7 @@ $.ajax({
                                 $("#currentWeather").append(`<p class="uvDiv card-text">UV Index: ${uvIndex}</p>`)
                                 
                                 //Call a third ajax to get the 5 day forecast
+                                const fiveDayForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${APIKey}&units=imperial`
                                 $.ajax({
                                     url: fiveDayForecastUrl,
                                     method: "GET",
@@ -137,6 +134,23 @@ $.ajax({
                             });
                         }
                     });
+                    //Clears the search input container. 
+                    $('#search-value').val('');
+                },
+                error: function () {
+                    $('#search-value').val('');
+                    return;
+                }
+    });
+}
+if(history === []) {
+    return false;
+   } else {
+    searchClickHandler(historyLastValue);
+   }  
+});
+                    
+                
 
 
 

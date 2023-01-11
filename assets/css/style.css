@@ -9,3 +9,12 @@
     font-size: 24 px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.uDiv {
+    color: white;
+    display: inline-block;
+}
+
+.forecastCards {
+    margin: 20px;
+}
