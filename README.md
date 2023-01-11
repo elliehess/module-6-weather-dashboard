@@ -9,7 +9,7 @@ This is a weather dashboard where you are able to look up multiple cities for cu
 ![_Users_ellie_Desktop_bootcamp_challenges_module-6-weather-dashboard_index html](https://user-images.githubusercontent.com/118075347/211913378-ae82278e-5be0-4708-8eda-616cbfdbc292.png)
 
 
-[Click here for Webpage](https://elliehess.github.io/module-5-work-day-scheduler/)
+[Click here for Webpage](https://elliehess.github.io/module-6-weather-dashboard/)
 
 ## Installation
 
